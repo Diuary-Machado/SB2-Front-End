@@ -1,0 +1,111 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-lg-6 text-start">
+          <h3>Pagamentos</h3>
+        </div>
+
+        <div class="col-lg-6 text-end">
+          <button
+            (click)="new()"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#modalNovoPagamento"
+          >
+            <i class="fa fa-plus fa-1x"
+              ><span style="padding-left: 8px">Novo</span></i
+            >
+          </button>
+        </div>
+      </div>
+
+      <table class="table table-striped" border="1">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Data</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Forma de Pagamento</th>
+            <th scope="col">Situação</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let pagamento of lista">
+            <th scope="row">{{ pagamento.idPagamento }}</th>
+            <td>{{ pagamento.dtPagamento }}</td>
+            <td>{{ pagamento.horario.dtHorario }}</td>
+            <!-- Verifique se está exibindo corretamente -->
+            <td>{{ pagamento.formaPagamento.nmFormaPagto }}</td>
+            <!-- Verifique se está exibindo corretamente -->
+            <td>{{ pagamento.dsSituacao }}</td>
+            <td>
+              <div class="row">
+                <div class="col-lg-12 text-end">
+                  <button (click)="edit(pagamento)" class="btn btn-success">
+                    <i class="fa fa-pen fa-1x"></i>
+                  </button>
+                  <button
+                    (click)="deleteById(pagamento)"
+                    class="btn btn-danger ms-2"
+                  >
+                    <i class="fa fa-trash-can fa-1x"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Novo Pagamento -->
+<div
+  class="modal fade"
+  id="modalNovoPagamento"
+  tabindex="-1"
+  aria-labelledby="modalNovoPagamentoLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNovoPagamentoLabel">Novo Pagamento</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Aqui você pode incluir um formulário para adicionar um novo pagamento -->
+        <!-- Certifique-se de adicionar os campos necessários, como data, valor, funcionário e cliente -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalhes do Pagamento -->
+<ng-template #modalDetalhe>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Horários</h5>
+
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+
+  <div class="modal-body">
+    <app-pagamentodetails
+      [obj]="objEdit"
+      (retorno)="retornoDetalhe($event)"
+    ></app-pagamentodetails>
+  </div>
+</ng-template>

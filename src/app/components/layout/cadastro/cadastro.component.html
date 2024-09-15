@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-QgnmVCfYQwWekWaLR1w5KNpg7PAF1aHZ12OexVKPObwvbgKZ8zxCdY67+ygS+67ZTfij4lw2FkN4WWsUefY9yA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 40px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-signin {
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-signin h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .form-signin .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-signin .form-control {
+            height: calc(2.25rem + 2px);
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .form-signin button.btn-primary {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+
+        .form-signin button.btn-primary i {
+            margin-right: 5px;
+        }
+
+        .form-signin .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-signin" (ngSubmit)="save()">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Cadastre-se</h1>
+
+        <div class="form-group">
+            <label for="nmCliente">Nome</label>
+            <input id="nmCliente" name="nmCliente" type="text" class="form-control" [(ngModel)]="obj.nmCliente" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" id="inputEmail" name="dsEmail" class="form-control" placeholder="Seu email" required [(ngModel)]="obj.dsEmail">
+        </div>
+
+        <div class="form-group">
+            <label for="inputSenha">Senha</label>
+            <input type="password" id="inputSenha" name="dsSenha" class="form-control" placeholder="Senha" required [(ngModel)]="obj.dsSenha">
+        </div>
+
+        <div class="form-group">
+            <label for="inputconfirmasenha">Confirme sua Senha</label>
+            <input type="password" id="inputconfirmasenha" name="confirmasenha" class="form-control" placeholder="Confirme sua senha" required [(ngModel)]="confirmarsenha">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-save"></i> Salvar
+        </button>
+    </form>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-DywAwa3jg/kz7+46/xm4n5Eiy6M/kxvb8Urb+ZW+yI5l2RSv+zo5R8SuTI8brCUv"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-HYZkhA/QfvzTY2NlRGJ0LRqF2QfZy1lHHcW6W39cVzs+8kRb4ng5Pw8j6Jw/0dC5"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

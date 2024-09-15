@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand me-5" href="#"
+      ><i class="fa-solid fa-scissors fa-3x"></i
+    ></a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/dashboard">Home</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/horarios">Horários</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/clientes">Clientes</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/funcionario">Funcionários</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/pagamento">Pagamentos</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/formaPagamento">Formas Pagamento</a>
+        <a *ngIf="loginService.hasPermission('admin')" class="nav-link" href="admin/log">Logs de Auditoria</a>
+
+        <a *ngIf="loginService.hasPermission('cliente')" class="nav-link" href="cliente/perfil">Perfil</a>
+        <a *ngIf="loginService.hasPermission('cliente')" class="nav-link" href="cliente/horarios">Horários Cadastrados</a>
+       
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="login"
+          >Sair <i class="fa-solid fa-right-from-bracket ms-2"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</nav>
