@@ -1,0 +1,44 @@
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #f39c12;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.navbar-dark.bg-dark {
+    background-color: #343a40 !important;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        text-align: center;
+    }
+
+    .navbar-nav {
+        margin: 0 auto;
+    }
+}
