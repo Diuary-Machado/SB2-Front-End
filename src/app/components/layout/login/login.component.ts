@@ -30,39 +30,36 @@ export class LoginComponent {
   }
 
   logar() {
-    this.clienteService.findByUsername(this.login.username).subscribe({
-      next: data => {
-        this.cliente = data;
-
-        this.loginService.logar(this.login).subscribe({
-          next: token => { // QUANDO DÁ CERTO
-            console.log(token);
-        if(token)
-          //console.log(token)
-          this.loginService.addToken(token); //MUITO IMPORTANTE
-          if(this.loginService.hasPermission("admin"))
-            {
-              localStorage.setItem('idCliente', "0");
-              this.router.navigate(['/admin/dashboard']);
-            }
-            else {
-              localStorage.setItem('idCliente', this.cliente.idCliente != null ? this.cliente.idCliente.toString() : "0");
-              this.router.navigate(['/cliente/perfil']);
-            }
-          },
-          error: erro => { // QUANDO DÁ ERRO
-            //alert('Usuário ou senha incorretas');
-            console.error(erro);
-          }
-        });
+    this.loginService.logar(this.login).subscribe({
+      next: token => { 
+        if (token) {
+          // Adiciona o token ao localStorage
+          this.loginService.addToken(token);
+          console.log('Login bem-sucedido! Token armazenado:', token);
+  
+          // Redireciona automaticamente para a rota do admin
+          this.router.navigate(['/admin/dashboard']);
+        }
       },
       error: erro => {
+        // Exibe um alerta de erro ao usuário
+        console.error('Erro ao fazer login:', erro);
         Swal.fire({
-          title: erro.error ? erro.error.toString()  : erro.message.toString(),
+          title: 'Erro',
+          text: 'Usuário ou senha incorretos',
           icon: 'error',
           confirmButtonText: 'Ok'
         });
       }
     });
   }
+    //   error: erro => {
+    //     Swal.fire({
+    //       title: erro.error ? erro.error.toString()  : erro.message.toString(),
+    //       icon: 'error',
+    //       confirmButtonText: 'Ok'
+    //     });
+    //   }
+    // });
+  // }
 }

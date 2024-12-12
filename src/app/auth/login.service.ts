@@ -23,9 +23,10 @@ export class LoginService {
   }
 
   addToken(token: string) {
-    localStorage.setItem('token', token);
+    const objeto = JSON.parse(token); // Converte a string JSON em um objeto
+    const token_limpo = objeto.access_token; // Acessa o 'access_token' do objeto JSON
+    localStorage.setItem('token', token_limpo); // Armazena apenas o JWT no localStorage
   }
-
   removerToken() {
     localStorage.removeItem('token');
   }
